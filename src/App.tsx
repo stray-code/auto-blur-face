@@ -86,7 +86,14 @@ function App() {
               variant="light"
               color="grape"
               fullWidth
-              onClick={() => onSubmit(form.values)}
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = blurredImage;
+                link.download = "image.png";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
               disabled={!blurredImage}
             >
               ぼかした画像をダウンロード
